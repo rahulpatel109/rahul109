@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thrift - Online Fashion Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; }
+    header { background: #000; color: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 28px; font-weight: bold; }
+    nav a { color: #fff; margin-left: 20px; text-decoration: none; font-size: 16px; }
+    .search { margin-left: auto; margin-right: 20px; }
+    .search input { padding: 6px 10px; border-radius: 20px; border: none; outline: none; }
+    .banner { background: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246') no-repeat center/cover; height: 300px; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; }
+    .categories, .products { padding: 40px 30px; }
+    .categories h2, .products h2 { margin-bottom: 20px; font-size: 24px; }
+    .category-grid, .product-grid {
+      display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .category, .product {
+      background: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .category img, .product img {
+      max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;
+    }
+    .product h3 { font-size: 16px; margin-bottom: 5px; }
+    .product .price { font-weight: bold; color: #e67e22; }
+    .product .link a { text-decoration: none; color: #2980b9; font-size: 14px; }
+    .footer {
+      background: #222; color: #ccc; padding: 40px 30px; display: flex; flex-wrap: wrap; justify-content: space-between;
+    }
+    .footer div { margin-bottom: 20px; }
+    .footer a { color: #ccc; display: block; margin-top: 8px; text-decoration: none; font-size: 14px; }
+    .subscribe input { padding: 10px; width: 200px; margin-right: 10px; border-radius: 20px; border: none; }
+    .subscribe button { padding: 10px 15px; background: #e67e22; border: none; color: #fff; border-radius: 20px; cursor: pointer; }
+    .cta-banner {
+      background: #e67e22; color: white; text-align: center; padding: 30px 20px; font-size: 20px; font-weight: bold;
+    }
+    .cta-banner a {
+      display: inline-block; margin-top: 10px; padding: 10px 20px; background: #fff; color: #e67e22; border-radius: 25px; text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      nav a, .search input { margin: 10px 0; display: block; }
+      header { flex-direction: column; align-items: flex-start; }
+      .footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Thrift</div>
+    <div class="search"><input type="text" placeholder="Search for fashion, brands & more" /></div>
+    <nav>
+      <a href="#men">Men</a>
+      <a href="#women">Women</a>
+      <a href="#kids">Kids</a>
+      <a href="#footwear">Footwear</a>
+      <a href="#accessories">Accessories</a>
+    </nav>
+  </header>
+
+  <div class="banner">FASHION FORWARD | AFFORDABLE ALWAYS</div>
+
+  <section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+      <div class="category"><img src="https://images.unsplash.com/photo-1618354691261-c92a3c7b3d21" alt="Men"/><div>Men</div></div>
+      <div class="category"><img src="https://images.unsplash.com/photo-1612423284934-92f9b4bbf14b" alt="Women"/><div>Women</div></div>
+      <div class="category"><img src="https://images.unsplash.com/photo-1621849746769-35964fbb5399" alt="Kids"/><div>Kids</div></div>
+      <div class="category"><img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Footwear"/><div>Footwear</div></div>
+      <div class="category"><img src="https://images.unsplash.com/photo-1593032465171-a3a97648b159" alt="Accessories"/><div>Accessories</div></div>
+    </div>
+  </section>
+
+  <section class="products">
+    <h2>Trending Products</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1593032457869-bf6c9d1d6d89" alt="Jacket">
+        <h3>Leather Jacket</h3>
+        <div class="price">₹2,799</div>
+        <div class="link"><a href="#">View Product</a></div>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1555529669-e69c8a0fca1d" alt="Sneakers">
+        <h3>Classic Sneakers</h3>
+        <div class="price">₹1,499</div>
+        <div class="link"><a href="#">View Product</a></div>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1602810319429-73d7eec03c3c" alt="Kurti">
+        <h3>Printed Kurti</h3>
+        <div class="price">₹999</div>
+        <div class="link"><a href="#">View Product</a></div>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Watch">
+        <h3>Digital Watch</h3>
+        <div class="price">₹799</div>
+        <div class="link"><a href="#">View Product</a></div>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224c1f4" alt="Handbag">
+        <h3>Trendy Handbag</h3>
+        <div class="price">₹1,199</div>
+        <div class="link"><a href="#">View Product</a></div>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783" alt="Shirt">
+        <h3>Formal Shirt</h3>
+        <div class="price">₹799</div>
+        <div class="link"><a href="#">View Product</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    Sign up now and get ₹200 OFF on your first order!
+    <br>
+    <a href="#">Sign Up</a>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <h4>Thrift</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Stores</a>
+    </div>
+    <div>
+      <h4>Customer Care</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Returns</a>
+      <a href="#">Shipping Info</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+    </div>
+    <div class="subscribe">
+      <h4>Subscribe</h4>
+      <input type="email" placeholder="Your Email">
+      <button>Subscribe</button>
+    </div>
+  </footer>
+</body>
+</html>

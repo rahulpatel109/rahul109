@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rahul | Web Developer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 100vh;
+      background-color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      border-right: 1px solid #222;
+    }
+
+    .sidebar .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #0ff;
+      margin-bottom: 40px;
+    }
+
+    .sidebar nav a {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      color: #aaa;
+      text-decoration: none;
+      margin: 20px 0;
+      transition: 0.3s;
+    }
+
+    .sidebar nav a:hover {
+      color: #0ff;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 80px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: linear-gradient(to right, #0f0f0f, #151515);
+    }
+
+    .content {
+      max-width: 600px;
+    }
+
+    .content h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .content h1 span {
+      color: #0ff;
+    }
+
+    .content p {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: transparent;
+      color: #0ff;
+      border: 2px solid #0ff;
+      padding: 10px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background-color: #0ff;
+      color: #000;
+    }
+
+    /* Optional neon line */
+    .neon-line {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      height: 200px;
+      width: 2px;
+      background: linear-gradient(to bottom, #ff0080, #7928ca);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        display: none;
+      }
+      .main {
+        margin-left: 0;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo">R</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Work</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <h1>Hi, I'm <span>Rahul</span>,<br/>web developer</h1>
+      <p>I build fast, responsive and elegant websites using modern web technologies.</p>
+      <a class="btn" href="#contact">Contact Me</a>
+    </div>
+    <div class="neon-line"></div>
+  </div>
+
+</body>
+</html>
