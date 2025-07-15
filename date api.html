@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Date Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Current Date and Time</h2>
+  <p id="currentDate"></p>
+  <p id="currentTime"></p>
+  <p id="isoFormat"></p>
+  <p id="after5Days"></p>
+
+  <script>
+    // Create Date object
+    let now = new Date();
+
+    // Display current date
+    document.getElementById("currentDate").innerText = "Date: " + now.toDateString();
+
+    // Display current time
+    document.getElementById("currentTime").innerText = "Time: " + now.toLocaleTimeString();
+
+    // Display ISO format
+    document.getElementById("isoFormat").innerText = "ISO Format: " + now.toISOString();
+
+    // Add 5 days
+    let future = new Date(now);
+    future.setDate(future.getDate() + 5);
+
+    // Display future date
+    document.getElementById("after5Days").innerText = "Date After 5 Days: " + future.toDateString();
+  </script>
+
+</body>
+</html>

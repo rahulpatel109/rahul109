@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Defined Object</title>
+    
+</head>
+<body>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Emp No</th>
+                <th>Emp Name</th>
+                <th>Emp Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Employee objects
+        var emp = { empNo: 107, empName: "Rahul", empPwd: "Admin@107" };
+        var emp1 = { empNo: 112, empName: "Dhanush", empPwd: "Admin@112" };
+        var emp2 = { empNo: 158, empName: "Teja", empPwd: "Admin@158" };
+
+        // Create a set and add employees
+        var empSet = new Set([emp, emp1, emp2]);
+
+        // Reference to table body
+        var tableBody = document.getElementById("employeeTable").getElementsByTagName("tbody")[0];
+
+        // Loop through set and display in table
+        for (var employee of empSet) {
+            var row = document.createElement("tr");
+
+            var cellNo = document.createElement("td");
+            cellNo.textContent = employee.empNo;
+
+            var cellName = document.createElement("td");
+            cellName.textContent = employee.empName;
+
+            var cellPwd = document.createElement("td");
+            cellPwd.textContent = employee.empPwd;
+
+            row.appendChild(cellNo);
+            row.appendChild(cellName);
+            row.appendChild(cellPwd);
+
+            tableBody.appendChild(row);
+        }
+        var iterator=empset.keys();
+        for(var x of iterator){
+            const json=JSON.stringify(x);
+            document.write(json+"<br>");
+        }
+    </script>
+</body>
+</html>

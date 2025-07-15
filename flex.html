@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Table Example</title>
+  <style>
+    .table {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      background-color: #e6f2ff; /* Light blue background for table */
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .row {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .cell {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      border-right: 1px solid #ddd;
+    }
+
+    .cell:last-child {
+      border-right: none;
+    }
+
+    /* Alternating row colors */
+    .row:nth-child(even):not(.header) {
+      background-color: #ffffff;
+    }
+
+    .row:nth-child(odd):not(.header) {
+      background-color: #d9ebff;
+    }
+
+    /* Header style */
+    .header {
+      background-color: #2a7a43;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Column order */
+    .reorder-name {
+      order: 2;
+    }
+
+    .reorder-age {
+      order: 1;
+    }
+
+    .reorder-city {
+      order: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Flexbox Table with Colored Rows</h2>
+
+  <div class="table">
+    <!-- Header Row -->
+    <div class="row header">
+      <div class="cell reorder-name">Name</div>
+      <div class="cell reorder-age">Age</div>
+      <div class="cell reorder-city">City</div>
+    </div>
+
+    <!-- Data Rows -->
+    <div class="row">
+      <div class="cell reorder-name">Rahul</div>
+      <div class="cell reorder-age">22</div>
+      <div class="cell reorder-city">Mumbai</div>
+    </div>
+    <div class="row">
+      <div class="cell reorder-name">dhanush</div>
+      <div class="cell reorder-age">24</div>
+      <div class="cell reorder-city">Delhi</div>
+    </div>
+    <div class="row">
+      <div class="cell reorder-name">Amit</div>
+      <div class="cell reorder-age">21</div>
+      <div class="cell reorder-city">Chennai</div>
+    </div>
+  </div>
+
+</body>
+</html>

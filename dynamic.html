@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Student Registration & Search</title>
+</head>
+<body>
+  <h2>Student Registration</h2>
+
+  <!-- Add Student -->
+  <button onclick="addStudent()">Add Student (Prompt)</button>
+
+  <!-- Search Section -->
+  <div>
+    <h3>Search Student by ID</h3>
+    <input type="text" id="searchId" placeholder="Enter Student ID">
+    <button onclick="searchStudent()">Search</button>
+  </div>
+
+  <!-- Search Result -->
+  <div id="searchResult"></div>
+
+  <!-- Student Table -->
+  <div id="fullTable">
+    <h3>All Students</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <!-- Dynamic Rows -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const studentMap = new Map();
+
+    function displayAllStudents() {
+      const tableBody = document.getElementById("studentTableBody");
+      tableBody.innerHTML = "";
+
+      for (let [id, student] of studentMap) {
+        tableBody.innerHTML += `
+          <tr>
+            <td>${id}</td>
+            <td>${student.name}</td>
+            <td>${student.course}</td>
+            <td>${student.email}</td>
+            <td>
+              <button onclick="editStudent(${id})">Edit</button>
+              <button onclick="deleteStudent(${id})">Delete</button>
+            </td>
+          </tr>`;
+      }
+
+      document.getElementById("fullTable").style.display = "block";
+    }
+
+    function addStudent() {
+      const idInput = prompt("Enter Student ID:");
+      const id = parseInt(idInput?.trim());
+
+      const name = prompt("Enter Student Name:")?.trim();
+      const course = prompt("Enter Course:")?.trim();
+      const email = prompt("Enter Email:")?.trim();
+      const resultDiv = document.getElementById("searchResult");
+
+      if (!id || !name || !course || !email) {
+        resultDiv.innerHTML = `<p>All fields are required and must be valid.</p>`;
+        return;
+      }
+
+      if (studentMap.has(id)) {
+        resultDiv.innerHTML = `<p>Student ID already exists.</p>`;
+        return;
+      }
+
+      studentMap.set(id, { name, course, email });
+      resultDiv.innerHTML = `<p>Student added successfully.</p>`;
+      displayAllStudents();
+    }
+
+    function searchStudent() {
+      const input = document.getElementById("searchId").value.trim();
+      const id = parseInt(input);
+      const resultDiv = document.getElementById("searchResult");
+      const tableDiv = document.getElementById("fullTable");
+      resultDiv.innerHTML = "";
+
+      if (studentMap.has(id)) {
+        const student = studentMap.get(id);
+        resultDiv.innerHTML = `
+          <h3>Search Result</h3>
+          <p><strong>ID:</strong> ${id}</p>
+          <p><strong>Name:</strong> ${student.name}</p>
+          <p><strong>Course:</strong> ${student.course}</p>
+          <p><strong>Email:</strong> ${student.email}</p>
+        `;
+        tableDiv.style.display = "none";
+      } else {
+        resultDiv.innerHTML = `<p>No student found with ID ${input}</p>`;
+        tableDiv.style.display = "none";
+      }
+    }
+
+    function editStudent(id) {
+      const student = studentMap.get(id);
+      if (!student) return;
+
+      const name = prompt("Edit Name:", student.name)?.trim();
+      const course = prompt("Edit Course:", student.course)?.trim();
+      const email = prompt("Edit Email:", student.email)?.trim();
+
+      if (!name || !course || !email) {
+        alert("All fields must be filled correctly.");
+        return;
+      }
+
+      studentMap.set(id, { name, course, email });
+      alert("Student details updated.");
+      displayAllStudents();
+    }
+
+    function deleteStudent(id) {
+      const confirmDelete = confirm(`Are you sure you want to delete student ID ${id}?`);
+      if (confirmDelete) {
+        studentMap.delete(id);
+        alert("Student deleted.");
+        displayAllStudents();
+      }
+    }
+
+    // Initial Display
+    displayAllStudents();
+  </script>
+</body>
+</html>

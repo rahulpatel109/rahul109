@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration</title>
+</head>
+<body>
+  <h2>Employee Map Data</h2>
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>ID</th>
+      </tr>
+    </thead>
+    <tbody id="mapTableBody">
+      <!-- Data will be inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Create a Map with initial values
+    let empMap = new Map([
+      ["Srinivas", 111],
+      ["Rahul", 112],
+      ["srini", 112]
+    ]);
+
+    // Add more entries
+    empMap.set("Challa", 114);
+    empMap.set("CSREDDY", 115);
+
+    // Get the table body element
+    let tableBody = document.getElementById("mapTableBody");
+
+    // Loop through the map and insert rows into the table
+    for (let [name, id] of empMap) {
+      let row = `<tr><td>${name}</td><td>${id}</td></tr>`;
+      tableBody.innerHTML += row;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Todos</title>
+</head>
+<body>
+
+<div id="sample">
+    <h2>Getting Data</h2>
+    <p>Please click on the button to fetch data</p>
+    <button type="button" onclick="displayDoc()">Click Me</button>
+    <div id="output"></div>
+</div>
+
+<script>
+   function displayDoc() {
+      var myObj = new XMLHttpRequest();
+      var outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = "Loading data...";
+
+      myObj.onreadystatechange = function() {
+         if (this.readyState == 4) {
+            if (this.status == 200) {
+               var data = JSON.parse(this.responseText);
+               var content = "<h3>First 5 Todos:</h3><ul>";
+               for (var i = 0; i < 5; i++) {
+                   content += "<li>ID: " + data[i].id + 
+                              " - Title: " + data[i].title + 
+                              " - Completed: " + (data[i].completed ? "Yes" : "No") + "</li>";
+               }
+               content += "</ul>";
+               outputDiv.innerHTML = content;
+            } else {
+               outputDiv.innerHTML = "Failed to fetch data.";
+            }
+         }
+      };
+
+      myObj.open("GET", "https://jsonplaceholder.typicode.com/todos", true);
+      myObj.send();
+   }
+</script>
+
+</body>
+</html>

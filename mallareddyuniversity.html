@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Grid Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eaf5e6;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        "header header header"
+        "sidebar content1 content1"
+        "sidebar content2 content3"
+        "footer footer footer";
+      grid-template-columns: 1fr 2fr 2fr;
+      grid-gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .grid-container > * {
+      background-color: #32cd32;
+      border: 1px solid #000;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .header    { grid-area: header; }
+    .sidebar   { grid-area: sidebar; }
+    .content1  { grid-area: content1; }
+    .content2  { grid-area: content2; }
+    .content3  { grid-area: content3; }
+    .footer    { grid-area: footer; }
+
+    .info-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: #2e8b57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CSS GRID</h2>
+
+  <div class="grid-container">
+    <div class="header">Header</div>
+    <div class="sidebar">Side Bar</div>
+    <div class="content1">Content 1</div>
+    <div class="content2">Content 2</div>
+    <div class="content3">Content 3</div>
+    <div class="footer">Footer</div>
+  </div>
+    <h3>About CSS Grid</h3>
+    <p>
+      <strong>CSS Grid</strong> is a powerful 2-dimensional layout system in CSS. It lets you design web pages by dividing space into rows and columns.
+      You can place items into specific areas using <code>grid-area</code> and define layouts using <code>grid-template-areas</code>, <code>grid-template-columns</code>, and <code>grid-template-rows</code>.
+    </p>
+    <ul>
+      <li><strong>grid-template-areas:</strong> Names the sections of the layout.</li>
+      <li><strong>grid-area:</strong> Assigns elements to specific named areas.</li>
+      <li><strong>grid-gap:</strong> Adds space between rows and columns.</li>
+      <li><strong>Responsive:</strong> You can use media queries to make it responsive.</li>
+    </ul>
+    <p>CSS Grid makes it easier to build complex and responsive web designs with clean code.</p>
+
+</body>
+</html>

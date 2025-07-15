@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Days Between Two Dates</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    input, button {
+      font-size: 16px;
+      padding: 6px;
+      margin: 10px 5px 0 0;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Find Number of Days Between Two Dates</h2>
+
+  <label>Start Date:</label>
+  <input type="date" id="startDate"><br><br>
+
+  <label>End Date:</label>
+  <input type="date" id="endDate"><br><br>
+
+  <button onclick="calculateDays()">Calculate Days</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateDays() {
+      const start = document.getElementById("startDate").value;
+      const end = document.getElementById("endDate").value;
+
+      if (!start || !end) {
+        document.getElementById("result").innerText = "Please select both dates.";
+        return;
+      }
+
+      const date1 = new Date(start);
+      const date2 = new Date(end);
+
+      // Clear time values
+      date1.setHours(0, 0, 0, 0);
+      date2.setHours(0, 0, 0, 0);
+
+      // Get difference in milliseconds
+      const diff = Math.abs(date2 - date1);
+
+      // Convert to days
+      const days = diff / (1000 * 60 * 60 * 24);
+
+      document.getElementById("result").innerText = `Number of days between the dates: ${days}`;
+    }
+  </script>
+
+</body>
+</html>

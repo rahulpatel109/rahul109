@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traineee Data with Set</title>
+</head>
+<body>
+  <h2>Traineee Details (Stored in Set)</h2>
+  <div id="jsonOutput"></div>
+  <br>
+  <table border="1" id="traineeeTable" cellpadding="10">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+    </tr>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    class Traineee {
+      constructor(id, name, age, email) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+      }
+    }
+
+    let traineeeSet = new Set();
+    for (let i = 0; i < 5; i++) {
+      let id = prompt(`Enter Traineee ${i + 1} ID:`);
+      let name = prompt(`Enter Traineee ${i + 1} Name:`);
+      let age = prompt(`Enter Traineee ${i + 1} Age:`);
+      let email = prompt(`Enter Traineee ${i + 1} Email:`);
+
+      let traineee = new Traineee(id, name, age, email);
+      traineeeSet.add(traineee);
+    }
+
+    let traineeeArray = Array.from(traineeeSet);
+
+    document.getElementById('jsonOutput').innerHTML = `<pre>${JSON.stringify(traineeeArray, null, 2)}</pre>`;
+
+    const tableBody = document.querySelector('#traineeeTable tbody');
+
+    traineeeSet.forEach(traineee => {
+      let row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${traineee.id}</td>
+        <td>${traineee.name}</td>
+        <td>${traineee.age}</td>
+        <td>${traineee.email}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html> 

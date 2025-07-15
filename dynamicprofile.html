@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Profile Card Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    form input, form textarea, form select, form button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+    }
+
+    #cardsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 250px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      animation: fadeInScale 0.5s ease;
+      position: relative;
+    }
+
+    .card.dark {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .square { border-radius: 0; }
+    .rounded { border-radius: 12px; }
+    .circle { border-radius: 50%; }
+
+    .card button {
+      margin: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Profile Card Generator</h1>
+  <form id="profileForm">
+    <input type="text" id="name" placeholder="Enter your name" required />
+    <textarea id="bio" placeholder="Enter a short bio" required></textarea>
+    <input type="file" id="image" accept="image/*" required />
+    <select id="borderStyle" required>
+      <option value="square">Square</option>
+      <option value="rounded">Rounded</option>
+      <option value="circle">Circle</option>
+    </select>
+    <button type="submit">Generate Card</button>
+    <button type="button" id="previewBtn">Preview Card</button>
+  </form>
+
+  <div id="cardsContainer"></div>
+
+  <script>
+    const form = document.getElementById("profileForm");
+    const cardsContainer = document.getElementById("cardsContainer");
+
+    let cards = JSON.parse(localStorage.getItem("profileCards")) || [];
+    cards.forEach(cardData => createCard(cardData, false));
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const bio = document.getElementById("bio").value;
+      const borderStyle = document.getElementById("borderStyle").value;
+      const imageFile = document.getElementById("image").files[0];
+
+      if (!imageFile) return alert("Please upload an image!");
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const cardData = {
+          id: Date.now(),
+          name,
+          bio,
+          borderStyle,
+          image: reader.result,
+          theme: "light"
+        };
+        createCard(cardData);
+        form.reset();
+        removePreview(); // Clear preview on submission
+      };
+      reader.readAsDataURL(imageFile);
+    });
+
+    document.getElementById("previewBtn").addEventListener("click", () => {
+      const name = document.getElementById("name").value;
+      const bio = document.getElementById("bio").value;
+      const borderStyle = document.getElementById("borderStyle").value;
+      const imageFile = document.getElementById("image").files[0];
+
+      if (!name || !bio || !imageFile) {
+        alert("Please fill out all fields and select an image for preview.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        removePreview(); // remove old preview
+
+        const previewData = {
+          id: "previewCard",
+          name,
+          bio,
+          borderStyle,
+          image: reader.result,
+          theme: "light"
+        };
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.id = "previewCard";
+
+        const img = document.createElement("img");
+        img.src = previewData.image;
+        img.className = previewData.borderStyle;
+
+        const nameEl = document.createElement("h2");
+        nameEl.textContent = previewData.name;
+
+        const bioEl = document.createElement("p");
+        bioEl.textContent = previewData.bio;
+
+        card.append(img, nameEl, bioEl);
+        cardsContainer.prepend(card);
+      };
+      reader.readAsDataURL(imageFile);
+    });
+
+    function createCard(cardData, save = true) {
+      const card = document.createElement("div");
+      card.className = "card";
+      if (cardData.theme === "dark") card.classList.add("dark");
+
+      const img = document.createElement("img");
+      img.src = cardData.image;
+      img.className = cardData.borderStyle;
+
+      const name = document.createElement("h2");
+      name.textContent = cardData.name;
+
+      const bio = document.createElement("p");
+      bio.textContent = cardData.bio;
+
+      const toggleTheme = document.createElement("button");
+      toggleTheme.textContent = "Toggle Theme";
+      toggleTheme.onclick = () => {
+        card.classList.toggle("dark");
+        cardData.theme = card.classList.contains("dark") ? "dark" : "light";
+        updateLocalStorage();
+      };
+
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "Edit";
+      editBtn.onclick = () => {
+        document.getElementById("name").value = cardData.name;
+        document.getElementById("bio").value = cardData.bio;
+        document.getElementById("borderStyle").value = cardData.borderStyle;
+        card.remove();
+        cards = cards.filter(c => c.id !== cardData.id);
+        updateLocalStorage();
+      };
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.onclick = () => {
+        card.remove();
+        cards = cards.filter(c => c.id !== cardData.id);
+        updateLocalStorage();
+      };
+
+      card.append(img, name, bio, toggleTheme, editBtn, deleteBtn);
+      cardsContainer.appendChild(card);
+
+      if (save) {
+        cards.push(cardData);
+        updateLocalStorage();
+      }
+    }
+
+    function updateLocalStorage() {
+      localStorage.setItem("profileCards", JSON.stringify(cards));
+    }
+
+    function removePreview() {
+      const old = document.getElementById("previewCard");
+      if (old) old.remove();
+    }
+  </script>
+</body>
+</html>

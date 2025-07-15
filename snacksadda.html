@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snacks Adda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffaf2;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff8800, #ff3c00);
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      margin-bottom: 5px;
+    }
+
+    .slogan {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      background-color: #000;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff8800;
+    }
+
+    .hero {
+      background: url("data:image/png;base64,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") center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px #000;
+      text-align: center;
+      padding: 20px;
+    }
+
+
+    .hero h1 {
+      font-size: 3rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .gallery {
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      background-color: #fff2e6;
+    }
+
+    .gallery-item {
+      width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      background-color: white;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .caption {
+      padding: 10px;
+      text-align: center;
+      background-color: #ffefe0;
+      font-weight: bold;
+      color: #ff5500;
+    }
+
+    footer {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Snacks Adda</div>
+    <div class="slogan">Food Truck • Burger • Takeaway</div>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>Best Burgers, Biryani & More!</h1>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="gallery-item">
+      <img src="C:\Users\admin\Downloads\istockphoto-1130754545-612x612.jpg" alt="Biryani">
+      <div class="caption">Spicy Biryani 🍛</div>
+    </div>
+    <div class="gallery-item">
+      <img src="C:\Users\admin\Downloads\istockphoto-906360074-612x612.jpg"alt="Burger">
+      <div class="caption">Juicy Burger 🍔</div>
+    </div>
+    <div class="gallery-item">
+      <img src="C:\Users\admin\Downloads\istockphoto-1904477555-612x612.jpg"alt="Pizza">
+      <div class="caption">Cheesy Pizza 🍕</div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Snacks Adda. All rights reserved.
+  </footer>
+
+</body>
+</html>

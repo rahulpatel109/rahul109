@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1> DOM EVENTS</h1>
+    <meta charset="UTF-8">
+    <title>DOM Examples All-in-One</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Example 1: Change Text Content -->
+    <section>
+        <h2>1. Change Text Content</h2>
+        <h3 id="heading">Hello DOM</h3>
+        <button onclick="changeText()">Change Text</button>
+    </section>
+
+    <!-- Example 2: Add Event Listener -->
+    <section>
+        <h2>2. Event Listener</h2>
+        <button id="btnEvent">Click Me</button>
+        <p id="outputEvent"></p>
+    </section>
+
+    <!-- Example 3: Create and Append Elements -->
+    <section>
+        <h2>3. Create & Append Element</h2>
+        <button onclick="addItem()">Add List Item</button>
+        <ul id="listArea"></ul>
+    </section>
+
+    <!-- Example 4: Change Style -->
+    <section>
+        <h2>4. Change Style</h2>
+        <p id="stylePara">This text will change color and size.</p>
+        <button onclick="changeStyle()">Change Style</button>
+    </section>
+
+    <script>
+        // Example 1
+        function changeText() {
+            document.getElementById("heading").textContent = "Text Changed!";
+        }
+
+        // Example 2
+        document.getElementById("btnEvent").addEventListener("click", function() {
+            document.getElementById("outputEvent").textContent = "You clicked the button!";
+        });
+        // Example 3
+        function addItem() {
+            const li = document.createElement("li");
+            li.textContent = "New List Item";
+            document.getElementById("listArea").appendChild(li);
+        }
+
+        // Example 4
+        function changeStyle() {
+            const para = document.getElementById("stylePara");
+            para.style.color = "green";
+            para.style.fontSize = "22px";
+            para.style.fontWeight = "bold";
+        }
+    </script>
+    <script>
+        function sayHello() {
+            alert("Hello World")
+        }
+    </script>
+    </head>
+
+    <body>
+        <p>Click the following button and see result</p>
+        <form>
+            <input type="button" onclick="sayHello()" value="Say Hello" />
+        </form>
+    </body>
+
+</html>

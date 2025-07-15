@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Selectors Example</title>
+  <style>
+    /* Universal selector */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Type selector */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #ccc;
+    }
+
+    h1 {
+      color: darkgreen;
+      margin-bottom: 10px;
+    }
+
+    /* ID selector */
+    #intro {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-left: 5px solid green;
+    }
+
+    /* Class selector */
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+
+    /* Class for form container */
+    .form-box {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Descendant selector */
+    section p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    /* Child selector */
+    ul > li {
+      list-style-type: square;
+      margin-left: 20px;
+    }
+
+    /* Adjacent sibling selector */
+    h2 + p {
+      font-style: italic;
+    }
+
+    /* General sibling selector */
+    h3 ~ p {
+      color: #444;
+    }
+
+    /* Attribute selector for input text box */
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      border: 2px solid #999;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    /* Pseudo-class for focus effect */
+    input[type="text"]:focus {
+      border-color: #007acc;
+      outline: none;
+      background-color: #eef;
+    }
+
+    /* Label + input (adjacent sibling selector) */
+    label + input {
+      margin-top: 10px;
+    }
+
+    /* Attribute selector for link */
+    a[target="_blank"] {
+      color: blue;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: darkorange;
+    }
+
+    li:first-child {
+      background-color: #e0ffe0;
+    }
+
+    li:last-child {
+      background-color: #ffe0e0;
+    }
+
+    li:nth-child(2) {
+      font-weight: bold;
+    }
+
+    h2::before {
+      content: "";
+    }
+
+    h2::after {
+      content: " ";
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Selectors Showcase</h1>
+
+  <div id="intro">
+    <p>This is a demo of <span class="highlight">CSS selectors</span> in action.</p>
+  </div>
+
+  <section>
+    <h2>Section Title</h2>
+    <p>This paragraph is a direct sibling after the heading (adjacent sibling selector).</p>
+    <p>This paragraph is also a sibling (general sibling selector).</p>
+  </section>
+
+  <h3>Related Topics</h3>
+  <p>More paragraphs after h3 for general sibling selector demonstration.</p>
+  <p>Another one just to test general sibling selector.</p>
+
+  <ul>
+    <li>First item (first-child)</li>
+    <li>Second item (nth-child)</li>
+    <li>Last item (last-child)</li>
+  </ul>
+
+  <p>
+    Visit the <a href="https://www.w3schools.com" target="_blank">W3Schools</a> website.
+  </p>
+
+  <!-- Text Box Example Using Selectors -->
+  <div class="form-box">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+  </div>
+
+</body>
+</html>

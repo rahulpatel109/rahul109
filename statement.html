@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Statements Example</title>
+</head>
+<body>
+  <h2>Open the console to see the JavaScript statements in action</h2>
+
+  <script>
+    // 1. Declaration Statement
+    let name = "Rahul";
+    const age = 22;
+
+    // 2. Assignment Statement
+    let country;
+    country = "India";
+
+    // 3. Conditional Statement (if...else)
+    if (age >= 18) {
+      console.log(name + " is an adult.");
+    } else {
+      console.log(name + " is not an adult.");
+    }
+
+    // 4. Loop Statement (for loop)
+    for (let i = 1; i <= 3; i++) {
+      console.log("Loop iteration " + i);
+    }
+
+    // 5. Function Declaration
+    function greet(person) {
+      return "Hello, " + person + "!";
+    }
+
+    // 6. Function Call Statement
+    console.log(greet(name));
+
+    // 7. Switch Statement
+    let grade = "B";
+    switch (grade) {
+      case "A":
+        console.log("Excellent!");
+        break;
+      case "B":
+        console.log("Good Job!");
+        break;
+      default:
+        console.log("Keep trying!");
+    }
+
+    // 8. Try-Catch Statement
+    try {
+      let result = 10 / 0;
+      console.log("Result is: " + result);
+    } catch (error) {
+      console.log("Something went wrong: " + error.message);
+    }
+  </script>
+</body>
+</html>

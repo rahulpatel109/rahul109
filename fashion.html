@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #ddd;
+    }
+
+    header {
+      background-color: #7f5cc8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .category-bar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: white;
+      padding: 15px 0;
+    }
+
+    .category-bar div {
+      text-align: center;
+    }
+
+    .category-bar img {
+      height: 60px;
+      margin-bottom: 5px;
+    }
+
+    .banner {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .banner img {
+      max-width: 90%;
+      border-radius: 12px;
+    }
+
+    .sales-section {
+      text-align: center;
+      background-color: #d3d3d3;
+      padding: 40px 10px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+      background-color: #ccc;
+    }
+
+    th, td {
+      border: 1px solid #888;
+      padding: 12px 15px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #7f5cc8;
+      color: white;
+    }
+
+    .strike {
+      text-decoration: line-through;
+      color: gray;
+      margin-right: 5px;
+    }
+
+    section {
+      background-color: white;
+      padding: 30px 50px;
+    }
+cd 
+    section h2 {
+      font-size: 24px;
+      color: #444;
+    }
+
+    section p, li {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>FASHION STORE</header>
+
+  <div class="category-bar">
+    <div>
+      <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSr4LMxxov_pEIHB3TH9mgMHfgNQB8AVu2WIJgdPIBPRjUUuS-XIN_Hd-fV4yRv0kS4th2_LjtdXrWhUmX0ZDXXb90q5mNpXVAo3otC3N4sRL1p7KKyfGvYNcRL&usqp=CAc" alt="T-Shirts" />
+      <div><strong>T-Shirts</strong></div>
+    </div>
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSWzhh7UN4y3Fo-wcIKfiqrM5lSo9efS43rav1fzGarUTILOIXMrMwRPgEHBc5sY5TboWUy5_t_9FjF8QqBpF_q52hWZWgga5Z7-qPbuiziOdAuXIzBfutMe9bAJIy7pt7_wpeT8nhbO404&usqp=CAc" alt="Sun Glasses" />
+      <div><strong>Sun<br>Glasses</strong></div>
+    </div>
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRVpXTWs153OCHVEvwkESzlH9y6htc7rfm405fTmZb87lhnmdeZiDe1fzFfaNTJjH8Ko76iBkpNC1Y8P1zZnC5ostzf3gfKo673glztZaVLE3AAlfekljshyw&usqp=CAc " alt="Shirts" />
+      <div><strong>Shirts</strong></div>
+    </div>
+    <div>
+      <img src="https://i.imgur.com/HDG9bdI.png" alt="Shoes" />
+      <div><strong>Shoes</strong></div>
+    </div>
+    <div>
+      <img src="https://i.imgur.com/rICu07G.png" alt="Pants" />
+      <div><strong>Pants</strong></div>
+    </div>
+    <div>
+      <img src="https://i.imgur.com/4yN2d5D.png" alt="Perfumes" />
+      <div><strong>Perfumes</strong></div>
+    </div>
+  </div>
+
+  <div class="banner">
+    <img src="https://i.imgur.com/4h9gV3e.png" alt="Shopping Time Banner">
+  </div>
+
+  <div class="sales-section">
+    <h2>OUR UPCOMING SALES</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Festival</th>
+          <th>Discount</th>
+          <th>Starting Date</th>
+          <th>Ending Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Independence Day</td>
+          <td><span class="strike">30%</span> 40%</td>
+          <td>10 August</td>
+          <td>18 August</td>
+        </tr>
+        <tr>
+          <td>Diwali</td>
+          <td><span class="strike">50%</span> 60%</td>
+          <td>10 November</td>
+          <td>21 November</td>
+        </tr>
+        <tr>
+          <td>Christmas</td>
+          <td><span class="strike">35%</span> 50%</td>
+          <td>20 December</td>
+          <td>26 December</td>
+        </tr>
+        <tr>
+          <td>New Year</td>
+          <td><span class="strike">60%</span> 75%</td>
+          <td>30 December</td>
+          <td>6 January</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section>
+    <h2>Fashion Store: The One-stop Fashion Destination</h2>
+    <p>
+      Stepping out and finding a perfect fashion choice is difficult? Why worry when you have your own Fashion Store at home where you can browse through thousands of choices and order clothes according to your liking.
+    </p>
+    <p>
+      Don't worry if you don't like the item after you receive it, you can always exchange or return your item and get a full refund. Start shopping for your desired clothes and see it yourself.
+    </p>
+    <p>
+      Once you are done with your first shopping, we are very sure that you will continue that in future as well and we will try our best to give you more and more choices so that you can have a variety of clothes to choose from.
+    </p>
+
+    <h3>Festival Sales</h3>
+    <p>
+      We keep coming with different sales on Indian Festivals where we offer huge discounts. Subscribe to get notifications and never miss an offer again.
+    </p>
+    <ul>
+      <li>Independence Day Sale</li>
+      <li>Diwali Sale</li>
+      <li>Christmas Sale</li>
+      <li>New Year Sale</li>
+    </ul>
+
+    <h3>Payment Options</h3>
+    <p>
+      We support all major payment methods – Debit Card, Credit Card, UPI, EMI, Bank Transfer, and even Cash on Delivery. Choose what works best for you.
+    </p>
+  </section>
+
+  <footer>
+    © 2012–2023 FashionStore.com
+  </footer>
+
+</body>
+</html> 

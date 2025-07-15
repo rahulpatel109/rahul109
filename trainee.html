@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Class - Trainee</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Fill in the form</h2>
+
+        <input type="text" id="firstName" placeholder="First Name"><br><br>
+        <input type="text" id="lastName" placeholder="Last Name"><br><br>
+        <input type="text" id="course" placeholder="Course Name"><br><br>
+        <input type="number" id="courseCost" placeholder="Course Cost (₹)"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button id="createBtn">Create Form</button><br><br>
+
+        <input type="password" id="newPassword" placeholder="New Password (update)"><br><br>
+        <button id="updateBtn">Update Password</button><br><br>
+
+        <div id="result"></div><br>
+        <div id="message"></div><br>
+        <div id="traineeBox">Data will appear here...</div>
+    </div>
+
+    <script>
+        class Trainee {
+            constructor(firstName, lastName, course, courseCost, password) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.course = course;
+                this.courseCost = courseCost;
+                this.password = password;
+            }
+
+            updatePassword(newPassword) {
+                this.password = newPassword;
+            }
+        }
+
+        let traineeInstance = null;
+
+        const createBtn = document.getElementById("createBtn");
+        const updateBtn = document.getElementById("updateBtn");
+        const resultDiv = document.getElementById("result");
+        const messageDiv = document.getElementById("message");
+        const traineeBox = document.getElementById("traineeBox");
+
+        function displayTraineeData() {
+            if (traineeInstance) {
+                traineeBox.innerHTML = `
+                    <strong>First Name:</strong> ${traineeInstance.firstName}<br>
+                    <strong>Last Name:</strong> ${traineeInstance.lastName}<br>
+                    <strong>Course:</strong> ${traineeInstance.course}<br>
+                    <strong>Course Cost:</strong> ₹${traineeInstance.courseCost}<br>
+                    <strong>Password:</strong> ${traineeInstance.password}
+                `;
+            }
+        }
+
+        createBtn.addEventListener("click", () => {
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const course = document.getElementById("course").value.trim();
+            const courseCost = document.getElementById("courseCost").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (firstName && lastName && course && courseCost && password) {
+                traineeInstance = new Trainee(firstName, lastName, course, courseCost, password);
+
+                resultDiv.innerHTML = `
+                    <table border="1">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Course</th>
+                            <th>Cost (₹)</th>
+                        </tr>
+                        <tr>
+                            <td>${traineeInstance.firstName}</td>
+                            <td>${traineeInstance.lastName}</td>
+                            <td>${traineeInstance.course}</td>
+                            <td>${traineeInstance.courseCost}</td>
+                        </tr>
+                    </table>
+                `;
+                messageDiv.innerHTML = "Created successfully!";
+                displayTraineeData();
+            } else {
+                resultDiv.innerHTML = "";
+                messageDiv.innerHTML = "Please fill in all fields!";
+                traineeBox.innerHTML = "";
+            }
+        });
+
+        updateBtn.addEventListener("click", () => {
+            const newPassword = document.getElementById("newPassword").value.trim();
+            if (traineeInstance && newPassword) {
+                traineeInstance.updatePassword(newPassword);
+                messageDiv.innerHTML = "Password updated successfully!";
+                displayTraineeData();
+            } else {
+                messageDiv.innerHTML = "Please create a form first and enter a new password!";
+            }
+        });
+    </script>
+</body>
+
+</html>
